@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "/ ",
+        " D"
+    ],
+    "key": {
+        "D": {
+            "tag": "minecraft:planks"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "dixtas_armory:wooden_stiletto",
+        "count": 1
+    }
+}

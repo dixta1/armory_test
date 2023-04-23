@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "/ ",
+        " D"
+    ],
+    "key": {
+        "D": {
+            "tag": "minecraft:stone_tool_materials"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "dixtas_armory:stone_stiletto",
+        "count": 1
+    }
+}

@@ -1,0 +1,6 @@
+{
+	"parent": "dixtas_armory:item/twinblade",
+	"textures": {
+		"layer0" : "dixtas_armory:item/diamond_twinblade_handheld"
+	}
+}

@@ -1,0 +1,6 @@
+{
+	"parent": "dixtas_armory:item/greatsword",
+	"textures": {
+		"layer0" : "dixtas_armory:item/wooden_katana_handheld"
+	}
+}

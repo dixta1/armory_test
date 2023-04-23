@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "##",
+        "#D"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:gold_ingot"
+        },
+        "D": {
+            "item": "dixtas_armory:pole"
+        }
+    },
+    "result": {
+        "item": "dixtas_armory:golden_halberd",
+        "count": 1
+    }
+}

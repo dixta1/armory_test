@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " / ",
+        "L/S",
+        " / "
+    ],
+    "key": {
+        "/": {
+            "item": "minecraft:stick"
+        },
+        "L": {
+            "item": "minecraft:leather"
+        },
+        "S": {
+            "item": "minecraft:string"
+        }
+    },
+    "result": {
+        "item": "dixtas_armory:pole",
+        "count": 1
+    }
+}

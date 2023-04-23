@@ -1,0 +1,6 @@
+{
+	"parent": "dixtas_armory:item/greatswordx",
+	"textures": {
+		"layer0" : "dixtas_armory:item/golden_greatsword_handheld"
+	}
+}

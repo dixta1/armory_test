@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "/ ",
+        " D"
+    ],
+    "key": {
+        "D": {
+            "item": "minecraft:diamond"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "dixtas_armory:diamond_stiletto",
+        "count": 1
+    }
+}

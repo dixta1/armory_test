@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#",
+        "D"
+    ],
+    "key": {
+        "#": {
+            "tag": "minecraft:planks"
+        },
+        "D": {
+            "item": "dixtas_armory:pole"
+        }
+    },
+    "result": {
+        "item": "dixtas_armory:wooden_spear",
+        "count": 1
+    }
+}

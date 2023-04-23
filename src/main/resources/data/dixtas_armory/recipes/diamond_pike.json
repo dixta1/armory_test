@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#",
+        "D",
+        "D"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:diamond"
+        },
+        "D": {
+            "item": "dixtas_armory:pole"
+        }
+    },
+    "result": {
+        "item": "dixtas_armory:diamond_pike",
+        "count": 1
+    }
+}

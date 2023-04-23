@@ -1,0 +1,24 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "forge:separate-perspective",
+  "textures": {
+    "layer0": "dixtas_armory:item/diamond_twinblade_gui"
+  },
+  "base": {
+    "parent": "dixtas_armory:item/diamond_twinblade_gui"
+  },
+  "perspectives": {
+    "thirdperson_righthand": {
+      "parent": "dixtas_armory:item/diamond_twinblade_handheld"
+    },
+    "thirdperson_lefthand": {
+      "parent": "dixtas_armory:item/diamond_twinblade_handheld"
+    },
+    "firstperson_righthand": {
+      "parent": "dixtas_armory:item/diamond_twinblade_handheld"
+    },
+    "firstperson_lefthand": {
+      "parent": "dixtas_armory:item/diamond_twinblade_handheld"
+    }
+  }
+}

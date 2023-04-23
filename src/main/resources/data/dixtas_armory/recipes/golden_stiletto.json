@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "/ ",
+        " D"
+    ],
+    "key": {
+        "D": {
+            "item": "minecraft:gold_ingot"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "dixtas_armory:golden_stiletto",
+        "count": 1
+    }
+}

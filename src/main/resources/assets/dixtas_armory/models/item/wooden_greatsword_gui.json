@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0" : "dixtas_armory:item/wooden_greatsword_gui"
+  }
+}

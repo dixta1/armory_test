@@ -1,0 +1,12 @@
+{
+"type": "minecraft:smithing",
+"base": {
+"item": "dixtas_armory:diamond_battle_axe"
+},
+"addition": {
+"tag": "forge:ingots/electrum"
+},
+"result": {
+"item": "dixtas_armory:netherite_battle_axe"
+}
+} 

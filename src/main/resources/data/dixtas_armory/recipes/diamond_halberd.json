@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "##",
+        "#D"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:diamond"
+        },
+        "D": {
+            "item": "dixtas_armory:pole"
+        }
+    },
+    "result": {
+        "item": "dixtas_armory:diamond_halberd",
+        "count": 1
+    }
+}

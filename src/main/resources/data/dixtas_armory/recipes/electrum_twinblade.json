@@ -1,0 +1,12 @@
+{
+"type": "minecraft:smithing",
+"base": {
+"item": "dixtas_armory:diamond_twinblade"
+},
+"addition": {
+"tag": "forge:ingots/electrum"
+},
+"result": {
+"item": "dixtas_armory:netherite_twinblade"
+}
+} 

@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "/ ",
+        " D"
+    ],
+    "key": {
+        "D": {
+            "item": "minecraft:iron_ingot"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "dixtas_armory:iron_stiletto",
+        "count": 1
+    }
+}
