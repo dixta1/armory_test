@@ -45,7 +45,6 @@ public class DixtasArmory
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-        ModItemProperties.addCustomItemProperties();
     }
     private void setup(final FMLCommonSetupEvent event)
     {

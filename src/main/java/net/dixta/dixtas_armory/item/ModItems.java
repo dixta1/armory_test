@@ -64,10 +64,6 @@ public class ModItems {
             () -> new AdvancedSwordItem(Tiers.WOOD, 4, -3.5f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 5, 3,1, 0,0, 2,0,1,0,0.25f, 20,false,0, 0, 0, 0));
 
 
-    public static final RegistryObject<Item> WOODEN_SHIELD = ITEMS.register("wooden_shield",
-            () -> new ShieldItem(new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB).durability(500)));
-
-
  public static final RegistryObject<Item> STONE_DAGGER = ITEMS.register("stone_dagger",
             () -> new AdvancedSwordItem(Tiers.STONE, 3, -0.5f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),1.5,0,0,0,0,0,0,0,0,0,15,true,0,0.25f,1,0.25f));
 
@@ -113,8 +109,6 @@ public class ModItems {
             () -> new AdvancedSwordItem(Tiers.STONE, 4, -3.5f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 5, 3,1, 0,0, 2,0,1,0,0.25f, 20,false,0, 0, 0, 0));
 
 
-    public static final RegistryObject<Item> STONE_SHIELD = ITEMS.register("stone_shield",
-            () -> new ShieldItem(new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB).durability(500)));
 
 
 
@@ -163,8 +157,6 @@ public class ModItems {
             () -> new AdvancedSwordItem(Tiers.GOLD, 4, -3.5f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 5, 3,1, 0,0, 2,0,1,0,0.25f, 20,false,0, 0, 0, 0));
 
 
-    public static final RegistryObject<Item> GOLDEN_SHIELD = ITEMS.register("golden_shield",
-            () -> new ShieldItem(new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB).durability(500)));
 
 
  public static final RegistryObject<Item> IRON_DAGGER = ITEMS.register("iron_dagger",
@@ -261,9 +253,6 @@ public class ModItems {
             () -> new AdvancedSwordItem(Tiers.DIAMOND, 4, -3.5f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 5, 3,1, 0,0, 2,0,1,0,0.25f, 20,false,0, 0, 0, 0));
 
 
-    public static final RegistryObject<Item> DIAMOND_SHIELD = ITEMS.register("diamond_shield",
-            () -> new ShieldItem(new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB).durability(500)));
-
 
 
 
@@ -311,37 +300,6 @@ public class ModItems {
     public static final RegistryObject<Item> NETHERITE_PIKE = ITEMS.register("netherite_pike",
          () -> new AdvancedSwordItem(Tiers.NETHERITE, 4, -3.5f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 5, 3,1, 0,0, 2,0,1,0,0.25f, 20,false,0, 0, 0, 0));
 
-
-    public static final RegistryObject<Item> NETHERITE_SHIELD = ITEMS.register("netherite_shield",
-            () -> new ShieldItem(new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB).durability(500)));
-
-
-
-
-
-
-    public static final RegistryObject<Item> IRON_SHIELD = ITEMS.register("iron_shield",
-            () -> new ShieldItem(new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB).durability(500)));
-
-
-
-    public static final RegistryObject<Item> NETHERITE_TOWER_SHIELD = ITEMS.register("netherite_tower_shield",
-            () -> new ShieldItem(new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB).durability(500)));
-
-    public static final RegistryObject<Item> DIAMOND_TOWER_SHIELD = ITEMS.register("diamond_tower_shield",
-            () -> new ShieldItem(new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB).durability(500)));
-
-    public static final RegistryObject<Item> IRON_TOWER_SHIELD = ITEMS.register("iron_tower_shield",
-            () -> new ShieldItem(new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB).durability(500)));
-
-    public static final RegistryObject<Item> STONE_TOWER_SHIELD = ITEMS.register("stone_tower_shield",
-            () -> new ShieldItem(new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB).durability(500)));
-
-    public static final RegistryObject<Item> WOODEN_TOWER_SHIELD = ITEMS.register("wooden_tower_shield",
-            () -> new ShieldItem(new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB).durability(500)));
-
-    public static final RegistryObject<Item> GOLDEN_TOWER_SHIELD = ITEMS.register("golden_tower_shield",
-            () -> new ShieldItem(new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB).durability(500)));
 
 
 

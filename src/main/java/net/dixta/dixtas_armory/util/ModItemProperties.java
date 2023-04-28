@@ -10,24 +10,7 @@ import net.minecraftforge.fml.ModList;
 
 public class ModItemProperties {
     public static void addCustomItemProperties() {
-        makeShield(ModItems.WOODEN_SHIELD.get());
-        makeShield(ModItems.STONE_SHIELD.get());
-        makeShield(ModItems.GOLDEN_SHIELD.get());
-        makeShield(ModItems.IRON_SHIELD.get());
-        makeShield(ModItems.DIAMOND_SHIELD.get());
-        makeShield(ModItems.NETHERITE_SHIELD.get());
-        if(ModList.get().isLoaded("oreganized"))
-            makeShield(OreganizedItems.ELECTRUM_SHIELD.get());
 
-
-        makeShield(ModItems.WOODEN_TOWER_SHIELD.get());
-        makeShield(ModItems.STONE_TOWER_SHIELD.get());
-        makeShield(ModItems.GOLDEN_TOWER_SHIELD.get());
-        makeShield(ModItems.IRON_TOWER_SHIELD.get());
-        makeShield(ModItems.DIAMOND_TOWER_SHIELD.get());
-        makeShield(ModItems.NETHERITE_TOWER_SHIELD.get());
-        if(ModList.get().isLoaded("oreganized"))
-            makeShield(OreganizedItems.ELECTRUM_TOWER_SHIELD.get());
     }
 
     private static void makeShield(Item item) {

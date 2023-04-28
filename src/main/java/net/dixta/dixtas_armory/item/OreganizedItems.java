@@ -67,13 +67,6 @@ public class OreganizedItems {
             () -> new AdvancedSwordItem(OItemTiers.ELECTRUM, 4, -3.5f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 5, 3,1, 0,0, 2,0,1,0,0.25f, 20,false,0, 0, 0, 0));
 
 
-    //Shields
-    public static final RegistryObject<Item> ELECTRUM_SHIELD = ITEMS.register("electrum_shield",
-            () -> new ShieldItem(new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB).durability(500)));
-
-    public static final RegistryObject<Item> ELECTRUM_TOWER_SHIELD = ITEMS.register("electrum_tower_shield",
-            () -> new ShieldItem(new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB).durability(500)));
-
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
