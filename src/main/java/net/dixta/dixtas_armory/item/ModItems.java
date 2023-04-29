@@ -269,7 +269,7 @@ public class ModItems {
             () -> new AdvancedSwordItem(Tiers.NETHERITE, 13, -3.6f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.5,0,1,0,0,0,0,0,1,0.5f, 20,true, 0,0,0,0));
 
     public static final RegistryObject<Item> NETHERITE_KATANA = ITEMS.register("netherite_katana",
-            () -> new AdvancedSwordItem(Tiers.NETHERITE, 13, -3.6f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.5,0,1,0,0,0,0,0,1,0.5f, 20,true, 0,0,0,0));
+            () -> new AdvancedSwordItem(Tiers.NETHERITE, 13, -3.6f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.5,0,1,0,0,1,0,0,1,0.5f, 20,true, 0,0,0,0));
 
     public static final RegistryObject<Item> NETHERITE_GREATSWORD = ITEMS.register("netherite_greatsword",
             () -> new AdvancedSwordItem(Tiers.NETHERITE, 13, -3.6f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.5,0,1,0,0,0,0,0,1,0.5f, 20,true, 0,0,0,0));

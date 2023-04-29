@@ -114,27 +114,19 @@ public class AdvancedAxeItem extends AxeItem {
     }
 
     float findDamage(ItemStack stack) {
-        switch(stack.getTag().getInt("dixtas_armory.two_handed")) {
-            case 1:
-                return pTwoHandedIDamage;
-            case 2:
-                return pTwoHandedIIDamage;
-
-            default:
-                return pAttackDamage;
-        }
+        return switch (stack.getTag().getInt("dixtas_armory.two_handed")) {
+            case 1 -> pTwoHandedIDamage;
+            case 2 -> pTwoHandedIIDamage;
+            default -> pAttackDamage;
+        };
     }
 
     float findSpeed(ItemStack stack) {
-        switch(stack.getTag().getInt("dixtas_armory.two_handed")) {
-            case 1:
-                return pTwoHandedISpeed;
-            case 2:
-                return pTwoHandedIISpeed;
-
-            default:
-                return (float)pAttackSpeed;
-        }
+        return switch (stack.getTag().getInt("dixtas_armory.two_handed")) {
+            case 1 -> pTwoHandedISpeed;
+            case 2 -> pTwoHandedIISpeed;
+            default -> (float) pAttackSpeed;
+        };
     }
 
     private void twoHanded(LivingEntity pPlayer, ItemStack pStack) {
@@ -142,33 +134,27 @@ public class AdvancedAxeItem extends AxeItem {
         {
             pStack.getOrCreateTag().putInt("dixtas_armory.two_handed", -1);
 
-            if (pPlayer.getMainHandItem() == pStack)
+            if (pPlayer.getMainHandItem() == pStack && !pPlayer.getOffhandItem().getItem().equals(Items.AIR))
             {
-                if (!pPlayer.getOffhandItem().getItem().equals(Items.AIR))
-                {
-                    if(pLevelTwoHanded == 2 || checkHeavy(pPlayer.getOffhandItem()))
-                        pStack.getOrCreateTag().putInt("dixtas_armory.two_handed", 2);
-                    else
-                        pStack.getOrCreateTag().putInt("dixtas_armory.two_handed", 1);
-                }
+                if(pLevelTwoHanded == 2 || checkHeavy(pPlayer.getOffhandItem()))
+                    pStack.getOrCreateTag().putInt("dixtas_armory.two_handed", 2);
+                else
+                    pStack.getOrCreateTag().putInt("dixtas_armory.two_handed", 1);
             }
-            else if (pPlayer.getOffhandItem() == pStack)
+            else if (pPlayer.getOffhandItem() == pStack && !pPlayer.getMainHandItem().getItem().equals(Items.AIR))
             {
-                if (!pPlayer.getMainHandItem().getItem().equals(Items.AIR))
-                {
-                    if(pLevelTwoHanded == 2 || checkHeavy(pPlayer.getMainHandItem()))
-                        pStack.getOrCreateTag().putInt("dixtas_armory.two_handed", 2);
-                    else
-                        pStack.getOrCreateTag().putInt("dixtas_armory.two_handed", 1);
-                }
+                if(pLevelTwoHanded == 2 || checkHeavy(pPlayer.getMainHandItem()))
+                    pStack.getOrCreateTag().putInt("dixtas_armory.two_handed", 2);
+                else
+                    pStack.getOrCreateTag().putInt("dixtas_armory.two_handed", 1);
             }
         }
     }
 
     boolean checkHeavy(ItemStack pStack) {
         try {
-            pStack.getTag().getInt("dixtas_armory.two_handed");
-            return true;
+            int i = pStack.getTag().getInt("dixtas_armory.two_handed");
+            return i != 0;
         }
         catch(Exception error) {
             return false;

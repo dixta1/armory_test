@@ -36,6 +36,8 @@ import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.ToolAction;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jline.utils.Log;
+
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -104,27 +106,19 @@ public class AdvancedSwordItem extends SwordItem {
     }
 
     float findDamage(ItemStack stack) {
-        switch(stack.getTag().getInt("dixtas_armory.two_handed")) {
-            case 1:
-                return pTwoHandedIDamage;
-            case 2:
-                return pTwoHandedIIDamage;
-
-            default:
-                return getDamage();
-        }
+        return switch (stack.getTag().getInt("dixtas_armory.two_handed")) {
+            case 1 -> pTwoHandedIDamage;
+            case 2 -> pTwoHandedIIDamage;
+            default -> getDamage();
+        };
     }
 
     float findSpeed(ItemStack stack) {
-        switch(stack.getTag().getInt("dixtas_armory.two_handed")) {
-            case 1:
-                return pTwoHandedISpeed;
-            case 2:
-                return pTwoHandedIISpeed;
-
-            default:
-                return (float)pAttackSpeed;
-        }
+        return switch (stack.getTag().getInt("dixtas_armory.two_handed")) {
+            case 1 -> pTwoHandedISpeed;
+            case 2 -> pTwoHandedIISpeed;
+            default -> (float) pAttackSpeed;
+        };
     }
 
     @NotNull
@@ -184,8 +178,8 @@ public class AdvancedSwordItem extends SwordItem {
 
     boolean checkHeavy(ItemStack pStack) {
         try {
-            pStack.getTag().getInt("dixtas_armory.two_handed");
-            return true;
+            int i = pStack.getTag().getInt("dixtas_armory.two_handed");
+            return i != 0;
         }
         catch(Exception error) {
             return false;
