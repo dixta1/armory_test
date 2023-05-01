@@ -11,8 +11,10 @@ import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.CombatRules;
@@ -176,7 +178,7 @@ public class AdvancedSwordItem extends SwordItem {
         }
     }
 
-    boolean checkHeavy(ItemStack pStack) {
+    boolean isTwoHanded(ItemStack pStack) {
         try {
             int i = pStack.getTag().getInt("dixtas_armory.two_handed");
             return i != 0;
@@ -184,6 +186,15 @@ public class AdvancedSwordItem extends SwordItem {
         catch(Exception error) {
             return false;
         }
+    }
+
+    boolean stackHeavy (ItemStack pStack){
+        return pStack.is(ItemTags.create(new ResourceLocation("dixtas_armory:two_handed_heavy")));
+    }
+
+    boolean checkHeavy(ItemStack pStack) {
+
+        return isTwoHanded(pStack) || stackHeavy(pStack);
     }
 
 

@@ -2,14 +2,18 @@ package net.dixta.dixtas_armory.item.custom;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.damagesource.CombatRules;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffects;
@@ -151,7 +155,7 @@ public class AdvancedAxeItem extends AxeItem {
         }
     }
 
-    boolean checkHeavy(ItemStack pStack) {
+    boolean isTwoHanded(ItemStack pStack) {
         try {
             int i = pStack.getTag().getInt("dixtas_armory.two_handed");
             return i != 0;
@@ -159,6 +163,15 @@ public class AdvancedAxeItem extends AxeItem {
         catch(Exception error) {
             return false;
         }
+    }
+
+    boolean stackHeavy (ItemStack pStack){
+        return pStack.is(ItemTags.create(new ResourceLocation("dixtas_armory:two_handed_heavy")));
+    }
+
+    boolean checkHeavy(ItemStack pStack) {
+
+        return isTwoHanded(pStack) || stackHeavy(pStack);
     }
 
     float getDamageAfterMagicAbsorb(DamageSource pDamageSource, float pDamageAmount, LivingEntity pLiving ) {
