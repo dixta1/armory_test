@@ -125,6 +125,10 @@
   "tooltip.dixtas_armory.two_handed.1.blocked_light": "§cTwo-Handed I§r",
   "tooltip.dixtas_armory.two_handed.1.desc": "§8Minorly decreased Attack Damage and Speed when using this at the same time as another item. Majorly decreased Attack Damage and Speed when using a heavy weapon at the same time as this item.§r",
 
+  "tooltip.dixtas_armory.breach": "§6Breach§r",
+  "tooltip.dixtas_armory.breach.desc.vanilla": "§8Disable opponents' shields for §7%ss§8.§r",
+  "tooltip.dixtas_armory.breach.desc.shieldexp": "§8Disable opponents' shields for §7%sx§8 the shields default cooldown.§r",
+
   "tooltip.dixtas_armory.two_handed.2": "§6Two-Handed II§r",
   "tooltip.dixtas_armory.two_handed.2.blocked": "§4Two-Handed II§r",
   "tooltip.dixtas_armory.two_handed.2.desc": "§8Majorly reduced Attack Damage and Speed when using this at the same time as another item.§r",

@@ -172,7 +172,10 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.18.2-40.2.0'
 
 
-    implementation fg.deobf("curse.maven:oreganized-769203:4259582")
+    //compileOnly fg.deobf("curse.maven:oreganized-769203:4259582")
+
+    compileOnly fg.deobf("curse.maven:shieldexp-583318:4333627")
+
     //implementation fg.deobf("curse.maven:target_dummy-225738:3820503")
     //implementation fg.deobf("curse.maven:ctm-267602:2642375")
 

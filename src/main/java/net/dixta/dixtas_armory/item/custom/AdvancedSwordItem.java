@@ -1,44 +1,41 @@
 package net.dixta.dixtas_armory.item.custom;
 
 import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
+import net.dixta.dixtas_armory.item.custom.attributes.AttackAttribute;
+import net.dixta.dixtas_armory.item.custom.attributes.SweepAttribute;
+import net.dixta.dixtas_armory.item.custom.attributes.TwoHandedAttribute;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.Registry;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.CombatRules;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.ToolAction;
+import net.minecraftforge.fml.ModList;
+import org.infernalstudios.shieldexp.events.ShieldExpansionEvents;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jline.utils.Log;
 
 import java.util.List;
 import java.util.Random;
@@ -56,42 +53,76 @@ public class AdvancedSwordItem extends SwordItem {
     float pSweepBoxX;
     float pSweepBoxY;
     float pSweepBoxZ;
-    boolean pSweep;
+    boolean pCanSweep;
     float pAttackKnockback;
     float pTwoHandedIDamage;
     float pTwoHandedIIDamage;
     float pTwoHandedISpeed;
     float pTwoHandedIISpeed;
     float pDamageSweep;
-    double pCharge;
-    double pLastCharge;
+
+
     float pUnarmoredDamage;
     int pInvincibilityTime;
+    float pShieldCooldown;
     Random random = new Random();
 
-    public AdvancedSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, double pAttackRangeModifier, float pArmorPiercingModifier,float pArmorPiercingChance, float pKnockback, float pUnarmoredBonus, int pTwoHandedLevel, int pMinorlyReducedDamage, int pMajorlyReducedDamage, float pMinorlyReducedSpeed, float pMajorlyReducedSpeed, int pInvulnerabilityTime, boolean pCanSweep, float pSweepDamage, float pSweepHitBoxX, float pSweepHitBoxY, float pSweepHitBoxZ) {
+    public AdvancedSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, double pAttackRangeModifier, AttackAttribute pAttackAttribute, TwoHandedAttribute pTwoHandedValues, SweepAttribute pSweep) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
+
+        //Default Attributes
         pAttackRange = pAttackRangeModifier - 3;
-        pIsTwoHanded = (pTwoHandedLevel > 0);
-        pLevelTwoHanded = pTwoHandedLevel;
-        pArmorPiercing = pArmorPiercingModifier;
-        pSweepBoxX = pSweepHitBoxX;
-        pSweepBoxY = pSweepHitBoxY;
-        pSweepBoxZ = pSweepHitBoxZ;
-        pSweep = pCanSweep;
-        pAttackKnockback = pKnockback;
-        pAttackSpeed = pAttackSpeedModifier;
-        pTwoHandedISpeed = (float)pAttackSpeed - pMinorlyReducedSpeed;
-        pTwoHandedIISpeed = (float)pAttackSpeed - pMajorlyReducedSpeed;
-        pTwoHandedIDamage = getDamage() - pMinorlyReducedDamage;
-        pTwoHandedIIDamage = getDamage() - pMajorlyReducedDamage;
-        pDamageSweep = pSweepDamage;
-        pArmorPierceChance = pArmorPiercingChance;
-        pUnarmoredDamage = pUnarmoredBonus;
-        pInvincibilityTime = pInvulnerabilityTime;
+        pAttackSpeed = pAttackSpeedModifier - 4;
+
+        //Two-Handed
+        pIsTwoHanded = pTwoHandedValues.level > 0;
+        pLevelTwoHanded = pTwoHandedValues.level;
+        pTwoHandedISpeed = (float)pAttackSpeed - pTwoHandedValues.minSpeed;
+        pTwoHandedIISpeed = (float)pAttackSpeed -  pTwoHandedValues.majSpeed;
+        pTwoHandedIDamage = getDamage() - pTwoHandedValues.minDamage;
+        pTwoHandedIIDamage = getDamage() - pTwoHandedValues.majDamage;
+
+        //Sweep
+        pSweepBoxX = pSweep.sweepRadiusX;
+        pSweepBoxY = pSweep.sweepRadiusX;
+        pSweepBoxZ = pSweep.sweepRadiusX;
+        pCanSweep = pSweep.canSweep;
+        pDamageSweep = pSweep.sweepDamage;
+
+        //Attack
+        pAttackKnockback = pAttackAttribute.knockback;
+        pArmorPierceChance =pAttackAttribute.armorPiercingChance;
+        pArmorPiercing = pAttackAttribute.armorPiercingAmount;
+        pUnarmoredDamage = pAttackAttribute.unarmoredBonusDamage;
+        pInvincibilityTime = pAttackAttribute.invincibilityTime;
+        pShieldCooldown = pAttackAttribute.breachTime;
+
+
+
+
+
     }
 
 
+    @Override
+    public boolean canDisableShield(ItemStack stack, ItemStack shield, LivingEntity entity, LivingEntity attacker) {
+
+        if(entity instanceof Player) {
+            if(pShieldCooldown > 0) {
+                if(ModList.get().isLoaded("shieldexp")) {
+                    ((Player)entity).getCooldowns().addCooldown(entity.getUseItem().getItem(), (int)(ShieldExpansionEvents.getShieldValue(shield.getItem(),"cooldownTicks")  * pShieldCooldown));
+                } else {
+                    ((Player)entity).getCooldowns().addCooldown(entity.getUseItem().getItem(), (int)((float)100 * pShieldCooldown));
+                }
+
+
+                entity.stopUsingItem();
+                entity.level.broadcastEntityEvent(entity, (byte)30);
+            }
+        }
+
+        return false;
+    }
 
     @Override
     public Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot slot, ItemStack stack) {
@@ -142,12 +173,7 @@ public class AdvancedSwordItem extends SwordItem {
 
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
-        //Detect Attack-Charge
-        Player pPlayer = ((Player) pEntity);
-        if(pPlayer.getMainHandItem() == pStack) {
-            pLastCharge = pCharge;
-            pCharge = pPlayer.getAttackStrengthScale(0.5F);
-        }
+
 
         //Detect Two-Handed
         if(!(pLevelTwoHanded == 0))
@@ -193,6 +219,7 @@ public class AdvancedSwordItem extends SwordItem {
     }
 
     boolean checkHeavy(ItemStack pStack) {
+
 
         return isTwoHanded(pStack) || stackHeavy(pStack);
     }
@@ -274,22 +301,48 @@ public class AdvancedSwordItem extends SwordItem {
     }
 
     @Override
+    public boolean onLeftClickEntity(ItemStack stack, Player player, Entity entity) {
+        if(pArmorPiercing > 0 || pUnarmoredDamage > 0) {
+            boolean critical = player.getAttackStrengthScale(0.5F) == 1 && player.fallDistance > 0.0F && !player.isOnGround() && !player.onClimbable() && !player.isInWater() && !player.hasEffect(MobEffects.BLINDNESS) && !player.isPassenger() && entity instanceof LivingEntity;
+            critical = critical && !player.isSprinting();
+            stack.getOrCreateTag().putBoolean("dixtas_armory.attack.charged", player.getAttackStrengthScale(0.5F) > 0.9);
+            stack.getOrCreateTag().putBoolean("dixtas_armory.attack.crit", critical);
+        }
+
+
+        return super.onLeftClickEntity(stack, player, entity);
+    }
+
+
+    @Override
     public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
+        boolean charged = false;
+        boolean crit = false;
+        if(pArmorPiercing > 0 || pUnarmoredDamage > 0) {
+            assert pStack.getTag() != null;
+            charged = pStack.getTag().getBoolean("dixtas_armory.attack.charged");
+            crit = pStack.getTag().getBoolean("dixtas_armory.attack.crit");
+        }
+
+
         //Check Armor-Piercing
-        //pAttacker.sendMessage(new TextComponent(Integer.toString(pTarget.invulnerableTime)), pAttacker.getUUID());
         if(pArmorPiercing > 0) {
             if(random.nextFloat() <= pArmorPierceChance) {
-                if(pLastCharge == 1 || pCharge == 1) {
-                    actuallyHurt(DamageSource.GENERIC, pArmorPiercing, pTarget, pAttacker);
+                if(charged) {
+                    float damage = pArmorPiercing;
+                    if(crit)
+                        damage *= 1.5;
+                    actuallyHurt(DamageSource.GENERIC, damage, pTarget, pAttacker);
                 }
             }
         }
         //Check Unarmored Damage
-        else if (pUnarmoredDamage > 0 && noArmor(pTarget)) {
-            actuallyHurt(DamageSource.GENERIC, pUnarmoredDamage, pTarget, pAttacker);
+        else if (pUnarmoredDamage > 0 && noArmor(pTarget) && charged) {
+            float damage = pUnarmoredDamage;
+            if(crit)
+                damage *= 1.5;
+            actuallyHurt(DamageSource.GENERIC, damage, pTarget, pAttacker);
         }
-
-
 
         pTarget.invulnerableTime = pInvincibilityTime;
 
@@ -298,9 +351,11 @@ public class AdvancedSwordItem extends SwordItem {
     }
 
 
+
+
     @Override
     public boolean canPerformAction(ItemStack stack, ToolAction toolAction) {
-        if(pSweep) {
+        if(pCanSweep) {
             return super.canPerformAction(stack,toolAction);
         }
         else {
@@ -339,6 +394,25 @@ public class AdvancedSwordItem extends SwordItem {
                 }
             }
         }
+
+
+
+
+        if(!ModList.get().isLoaded("shieldexp"))
+        //Breach Display
+        if(pShieldCooldown > 0) {
+            pTooltipComponents.add(new TranslatableComponent("tooltip.dixtas_armory.breach"));
+            if(Screen.hasShiftDown()) {
+                if(ModList.get().isLoaded("shieldexp")) {
+                    pTooltipComponents.add(new TranslatableComponent("tooltip.dixtas_armory.breach.desc.shieldexp", pShieldCooldown).withStyle(ChatFormatting.GRAY));
+                } else {
+                    pTooltipComponents.add(new TranslatableComponent("tooltip.dixtas_armory.breach.desc.vanilla", 5 * pShieldCooldown).withStyle(ChatFormatting.GRAY));
+                }
+
+            }
+        }
+
+
 
         //Quick Strike Display
         if(pInvincibilityTime != 20) {
@@ -380,7 +454,7 @@ public class AdvancedSwordItem extends SwordItem {
 
 
         //Sweeping Display
-        if(pSweep ) {
+        if(pCanSweep ) {
             if(pDamageSweep != 0 && pDamageSweep != 1 || pSweepBoxX != 1) {
                 pTooltipComponents.add(new TranslatableComponent("tooltip.dixtas_armory.sweeping"));
 
