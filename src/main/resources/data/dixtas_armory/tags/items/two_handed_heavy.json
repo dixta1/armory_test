@@ -1,6 +1,20 @@
 {
   "replace": false,
   "values": [
-    "minecraft:apple"
+    "shieldexex:electrum_tower_shield",
+    "shieldexex:netherite_tower_shield",
+    "shieldexex:diamond_tower_shield",
+    "shieldexex:iron_tower_shield",
+    "shieldexex:golden_tower_shield",
+    "shieldexex:stone_tower_shield",
+    "shieldexex:wooden_tower_shield",
+
+    "shieldexp:paragon_shield",
+    "shieldexp:netherite_shield",
+    "shieldexp:diamond_shield",
+    "shieldexp:iron_shield",
+    "shieldexp:golden_shield",
+    "shieldexp:stone_shield",
+    "shieldexp:wooden_shield"
   ]
 }
