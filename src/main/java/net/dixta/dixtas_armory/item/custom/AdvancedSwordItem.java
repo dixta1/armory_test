@@ -130,7 +130,8 @@ public class AdvancedSwordItem extends SwordItem {
             ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
             builder.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_UUID, "Tool modifier", findDamage(stack), AttributeModifier.Operation.ADDITION));
             builder.put(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_UUID, "Tool modifier", findSpeed(stack), AttributeModifier.Operation.ADDITION));
-            builder.put(ForgeMod.ATTACK_RANGE.get(), new AttributeModifier(weaponRangeUUID, "Tool modifier", pAttackRange, AttributeModifier.Operation.ADDITION));
+            if(!ModList.get().isLoaded("bettercombat"))
+                builder.put(ForgeMod.ATTACK_RANGE.get(), new AttributeModifier(weaponRangeUUID, "Tool modifier", pAttackRange, AttributeModifier.Operation.ADDITION));
             builder.put(Attributes.ATTACK_KNOCKBACK, new AttributeModifier(weaponKnockbackUUID, "Knockback modifier", pAttackKnockback, AttributeModifier.Operation.ADDITION));
             return builder.build();
 
@@ -175,6 +176,8 @@ public class AdvancedSwordItem extends SwordItem {
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
 
 
+
+
         //Detect Two-Handed
         if(!(pLevelTwoHanded == 0))
             twoHanded((LivingEntity)pEntity, pStack);
@@ -183,6 +186,11 @@ public class AdvancedSwordItem extends SwordItem {
     }
 
     private void twoHanded(LivingEntity pPlayer, ItemStack pStack) {
+        if(pPlayer instanceof Player){
+            boolean b = ((Player) pPlayer).getInventory().getItem(40).getItem() == Items.AIR;
+        }
+
+
         if(pIsTwoHanded)
         {
             pStack.getOrCreateTag().putInt("dixtas_armory.two_handed", -1);
@@ -286,6 +294,7 @@ public class AdvancedSwordItem extends SwordItem {
 
     boolean noArmor(LivingEntity pEntity) {
         return !(hasHelmet(pEntity) || hasChestplate(pEntity) || hasLeggings(pEntity) || hasBoots(pEntity));
+
     }
     boolean hasHelmet(LivingEntity pEntity) {
         return !(pEntity.getItemBySlot(EquipmentSlot.HEAD).getItem() == Items.AIR);
