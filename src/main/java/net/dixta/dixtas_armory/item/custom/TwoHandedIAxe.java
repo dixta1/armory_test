@@ -1,13 +1,10 @@
 package net.dixta.dixtas_armory.item.custom;
 
-import net.dixta.dixtas_armory.item.WeaponProperties;
 import net.dixta.dixtas_armory.item.custom.attributes.AttackAttribute;
 import net.dixta.dixtas_armory.item.custom.attributes.SweepAttribute;
 import net.dixta.dixtas_armory.item.custom.attributes.TwoHandedAttribute;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -16,9 +13,9 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.fml.ModList;
 
-public class TwoHandedIWeapon extends AdvancedSwordItem{
-    public TwoHandedIWeapon(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, double pAttackRangeModifier, AttackAttribute pAttackAttribute, TwoHandedAttribute pTwoHandedValues, SweepAttribute pSweep, Item switchItem) {
-        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties, pAttackRangeModifier, pAttackAttribute, pTwoHandedValues, pSweep, switchItem);
+public class TwoHandedIAxe extends AdvancedAxeItem{
+    public TwoHandedIAxe(Tier pTier, float pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, double pAttackRangeModifier, float pArmorPiercingModifier, float pArmorPiercingChance, int pTwoHandedLevel, int pMinorlyReducedDamage, int pMajorlyReducedDamage, float pMinorlyReducedSpeed, float pMajorlyReducedSpeed, int pInvulnerabilityTime, int pDigDurability, float pMineSpeed, Item switchItem) {
+        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties, pAttackRangeModifier, pArmorPiercingModifier, pArmorPiercingChance, pTwoHandedLevel, pMinorlyReducedDamage, pMajorlyReducedDamage, pMinorlyReducedSpeed, pMajorlyReducedSpeed, pInvulnerabilityTime, pDigDurability, pMineSpeed, switchItem);
     }
 
     @Override
@@ -33,10 +30,6 @@ public class TwoHandedIWeapon extends AdvancedSwordItem{
                 } else {
                     switchItem(pStack, p);
                 }
-            } else if((p.getInventory().getItem(40) == pStack)) {
-                ItemStack pNew = new ItemStack(pSwitchItem);
-                pNew.setTag(pStack.getTag());
-                p.setItemSlot(EquipmentSlot.OFFHAND, pNew);
             }
         }
 
@@ -47,5 +40,6 @@ public class TwoHandedIWeapon extends AdvancedSwordItem{
         ItemStack pNew = new ItemStack(pSwitchItem);
         pNew.setTag(pStack.getTag());
         p.setItemInHand(InteractionHand.MAIN_HAND, pNew);
+
     }
 }

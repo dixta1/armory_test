@@ -11,6 +11,7 @@ import net.dixta.dixtas_armory.item.custom.attributes.SweepAttribute;
 import net.dixta.dixtas_armory.item.custom.attributes.TwoHandedAttribute;
 import net.dixta.dixtas_armory.item.custom.attributes.TwoHandedIIAttribute;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -53,7 +54,7 @@ public class OreganizedItems {
 
     //Axes
     public static final RegistryObject<Item> ELECTRUM_BATTLE_AXE = ITEMS.register("electrum_battle_axe",
-            () -> new AdvancedAxeItem(OItemTiers.ELECTRUM, 11, -3.35f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,0, 0, 1,1,5,0.1f,0.25f, 20,1,0.5f));
+            () -> new AdvancedAxeItem(OItemTiers.ELECTRUM, 11, -3.35f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,0, 0, 1,1,5,0.1f,0.25f, 20,1,0.5f, Items.AIR));
 
 
     //Pole-Arms

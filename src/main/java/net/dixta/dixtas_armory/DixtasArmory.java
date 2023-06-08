@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 
 import net.dixta.dixtas_armory.item.ModItems;
 import net.dixta.dixtas_armory.item.OreganizedItems;
+import net.dixta.dixtas_armory.item.custom.AdvancedAxeItem;
 import net.dixta.dixtas_armory.item.custom.AdvancedSwordItem;
 import net.dixta.dixtas_armory.util.ModItemProperties;
 import net.minecraft.world.level.block.Block;
@@ -64,5 +65,12 @@ public class DixtasArmory
         ((AdvancedSwordItem) ModItems.STONE_SPEAR.get()).pSwitchItem = ModItems.STONE_SPEAR_TWO_HANDED.get();
         ((AdvancedSwordItem) ModItems.WOODEN_SPEAR.get()).pSwitchItem = ModItems.WOODEN_SPEAR_TWO_HANDED.get();
         ((AdvancedSwordItem) ModItems.GOLDEN_SPEAR.get()).pSwitchItem = ModItems.GOLDEN_SPEAR_TWO_HANDED.get();
+
+        ((AdvancedAxeItem) ModItems.NETHERITE_BATTLE_AXE.get()).pSwitchItem = ModItems.NETHERITE_BATTLE_AXE_TWO_HANDED.get();
+        ((AdvancedAxeItem) ModItems.DIAMOND_BATTLE_AXE.get()).pSwitchItem = ModItems.DIAMOND_BATTLE_AXE_TWO_HANDED.get();
+        ((AdvancedAxeItem) ModItems.IRON_BATTLE_AXE.get()).pSwitchItem = ModItems.IRON_BATTLE_AXE_TWO_HANDED.get();
+        ((AdvancedAxeItem) ModItems.STONE_BATTLE_AXE.get()).pSwitchItem = ModItems.STONE_BATTLE_AXE_TWO_HANDED.get();
+        ((AdvancedAxeItem) ModItems.WOODEN_BATTLE_AXE.get()).pSwitchItem = ModItems.WOODEN_BATTLE_AXE_TWO_HANDED.get();
+        ((AdvancedAxeItem) ModItems.GOLDEN_BATTLE_AXE.get()).pSwitchItem = ModItems.GOLDEN_BATTLE_AXE_TWO_HANDED.get();
     }
 }

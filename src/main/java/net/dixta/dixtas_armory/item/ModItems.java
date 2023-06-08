@@ -3,6 +3,7 @@ package net.dixta.dixtas_armory.item;
 import net.dixta.dixtas_armory.DixtasArmory;
 import net.dixta.dixtas_armory.item.custom.AdvancedAxeItem;
 import net.dixta.dixtas_armory.item.custom.AdvancedSwordItem;
+import net.dixta.dixtas_armory.item.custom.TwoHandedIAxe;
 import net.dixta.dixtas_armory.item.custom.TwoHandedIWeapon;
 import net.dixta.dixtas_armory.item.custom.attributes.AttackAttribute;
 import net.dixta.dixtas_armory.item.custom.attributes.SweepAttribute;
@@ -58,7 +59,10 @@ public class ModItems {
 
     //Axes
     public static final RegistryObject<Item> WOODEN_BATTLE_AXE = ITEMS.register("wooden_battle_axe",
-            () -> new AdvancedAxeItem(Tiers.WOOD, 10, -3.50f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,0, 0, 1,1,3,0.05f,0.25f, 20,1,0.5f));
+            () -> new AdvancedAxeItem(Tiers.WOOD, 10, -3.50f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,0, 0, 1,1,3,0.05f,0.25f, 20,1,0.5f, Items.AIR));
+
+    public static final RegistryObject<Item> WOODEN_BATTLE_AXE_TWO_HANDED = ITEMS.register("wooden_battle_axe_two_handed",
+            () -> new TwoHandedIAxe(Tiers.WOOD, 10, -3.50f, new Item.Properties(),3.25,0, 0, 1,1,3,0.05f,0.25f, 20,1,0.5f, WOODEN_BATTLE_AXE.get()));
 
 
     //Pole-Arms
@@ -115,7 +119,10 @@ public class ModItems {
 
     //Axes
     public static final RegistryObject<Item> STONE_BATTLE_AXE = ITEMS.register("stone_battle_axe",
-            () -> new AdvancedAxeItem(Tiers.STONE, 12, -3.50f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,0, 0, 1,1,4,0.05f,0.25f, 20,1,0.5f));
+            () -> new AdvancedAxeItem(Tiers.STONE, 12, -3.50f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,0, 0, 1,1,4,0.05f,0.25f, 20,1,0.5f, Items.AIR));
+
+    public static final RegistryObject<Item> STONE_BATTLE_AXE_TWO_HANDED = ITEMS.register("stone_battle_axe_two_handed",
+            () -> new TwoHandedIAxe(Tiers.STONE, 12, -3.50f, new Item.Properties(),3.25,0, 0, 1,1,4,0.05f,0.25f, 20,1,0.5f, STONE_BATTLE_AXE.get()));
 
 
     //Pole-Arms
@@ -172,7 +179,10 @@ public class ModItems {
 
     //Axes
     public static final RegistryObject<Item> GOLDEN_BATTLE_AXE = ITEMS.register("golden_battle_axe",
-            () -> new AdvancedAxeItem(Tiers.GOLD, 10, -3.4f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,0, 0, 1,1,3,0.05f,0.25f, 20,1,0.5f));
+            () -> new AdvancedAxeItem(Tiers.GOLD, 10, -3.4f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,0, 0, 1,1,3,0.05f,0.25f, 20,1,0.5f, Items.AIR));
+
+    public static final RegistryObject<Item> GOLDEN_BATTLE_AXE_TWO_HANDED = ITEMS.register("golden_battle_axe_two_handed",
+            () -> new TwoHandedIAxe(Tiers.GOLD, 10, -3.4f, new Item.Properties(),3.25,0, 0, 1,1,3,0.05f,0.25f, 20,1,0.5f, GOLDEN_BATTLE_AXE.get()));
 
 
     //Pole-Arms
@@ -229,7 +239,10 @@ public class ModItems {
 
     //Axes
     public static final RegistryObject<Item> IRON_BATTLE_AXE = ITEMS.register("iron_battle_axe",
-            () -> new AdvancedAxeItem(Tiers.IRON, 11, -3.45f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,0, 0, 1,1,3,0.1f,0.25f, 20,1,0.5f));
+            () -> new AdvancedAxeItem(Tiers.IRON, 11, -3.45f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,0, 0, 1,1,3,0.1f,0.25f, 20,1,0.5f, Items.AIR));
+
+    public static final RegistryObject<Item> IRON_BATTLE_AXE_TWO_HANDED = ITEMS.register("iron_battle_axe_two_handed",
+            () -> new TwoHandedIAxe(Tiers.IRON, 11, -3.45f, new Item.Properties(),3.25,0, 0, 1,1,3,0.1f,0.25f, 20,1,0.5f, IRON_BATTLE_AXE.get()));
 
 
     //Pole-Arms
@@ -286,7 +299,10 @@ public class ModItems {
 
     //Axes
     public static final RegistryObject<Item> DIAMOND_BATTLE_AXE = ITEMS.register("diamond_battle_axe",
-            () -> new AdvancedAxeItem(Tiers.DIAMOND, 11, -3.4f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,0, 0, 1,1,5,0.1f,0.25f, 20,1,0.5f));
+            () -> new AdvancedAxeItem(Tiers.DIAMOND, 11, -3.4f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,0, 0, 1,1,5,0.1f,0.25f, 20,1,0.5f, Items.AIR));
+
+    public static final RegistryObject<Item> DIAMOND_BATTLE_AXE_TWO_HANDED = ITEMS.register("diamond_battle_axe_two_handed",
+            () -> new TwoHandedIAxe(Tiers.DIAMOND, 11, -3.4f, new Item.Properties(),3.25,0, 0, 1,1,5,0.1f,0.25f, 20,1,0.5f, DIAMOND_BATTLE_AXE.get()));
 
 
     //Pole-Arms
@@ -343,7 +359,10 @@ public class ModItems {
 
     //Axes
     public static final RegistryObject<Item> NETHERITE_BATTLE_AXE = ITEMS.register("netherite_battle_axe",
-            () -> new AdvancedAxeItem(Tiers.NETHERITE, 11, -3.4f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,0, 0, 1,1,5,0.1f,0.25f, 20,1,0.5f));
+            () -> new AdvancedAxeItem(Tiers.NETHERITE, 11, -3.4f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,0, 0, 1,1,5,0.1f,0.25f, 20,1,0.5f, Items.AIR));
+
+    public static final RegistryObject<Item> NETHERITE_BATTLE_AXE_TWO_HANDED = ITEMS.register("netherite_battle_axe_two_handed",
+            () -> new TwoHandedIAxe(Tiers.NETHERITE, 11, -3.4f, new Item.Properties(),3.25,0, 0, 1,1,5,0.1f,0.25f, 20,1,0.5f, NETHERITE_BATTLE_AXE.get()));
 
 
     //Pole-Arms

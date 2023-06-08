@@ -14,6 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.CombatRules;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffects;
@@ -32,6 +33,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.extensions.IForgePlayer;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -62,10 +64,11 @@ public class AdvancedAxeItem extends AxeItem {
     double pLastCharge;
     float pArmorPierceChance;
     Random random = new Random();
+    public Item pSwitchItem;
 
 
 
-    public AdvancedAxeItem(Tier pTier, float pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties,double pAttackRangeModifier, float pArmorPiercingModifier, float pArmorPiercingChance,int pTwoHandedLevel, int pMinorlyReducedDamage, int pMajorlyReducedDamage, float pMinorlyReducedSpeed, float pMajorlyReducedSpeed, int pInvulnerabilityTime, int pDigDurability, float pMineSpeed) {
+    public AdvancedAxeItem(Tier pTier, float pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties,double pAttackRangeModifier, float pArmorPiercingModifier, float pArmorPiercingChance,int pTwoHandedLevel, int pMinorlyReducedDamage, int pMajorlyReducedDamage, float pMinorlyReducedSpeed, float pMajorlyReducedSpeed, int pInvulnerabilityTime, int pDigDurability, float pMineSpeed, Item switchItem) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
 
         pAttackSpeed = pAttackSpeedModifier;
@@ -83,6 +86,8 @@ public class AdvancedAxeItem extends AxeItem {
         pTwoHandedIIDamage = pAttackDamage - pMajorlyReducedDamage;
         pInvincibilityTime = pInvulnerabilityTime;
         pArmorPierceChance = pArmorPiercingChance;
+
+        pSwitchItem = switchItem;
     }
 
 
@@ -104,6 +109,17 @@ public class AdvancedAxeItem extends AxeItem {
 
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
+
+        //Check switching
+        if(ModList.get().isLoaded("bettercombat") && pLevelTwoHanded == 1 && pEntity instanceof Player && !pLevel.isClientSide && !(this instanceof TwoHandedIAxe)) {
+            Player p = (Player) pEntity;
+            if(p.getMainHandItem() == pStack && (p.getOffhandItem().getItem() == Items.AIR || checkHeavy(p.getOffhandItem()))) {
+                ItemStack pNew = new ItemStack(pSwitchItem);
+                pNew.setTag(pStack.getTag());
+                p.setItemInHand(InteractionHand.MAIN_HAND, pNew);
+            }
+        }
+
         //Detect Attack-Charge
         Player pPlayer = ((Player) pEntity);
         if(pPlayer.getMainHandItem() == pStack) {
