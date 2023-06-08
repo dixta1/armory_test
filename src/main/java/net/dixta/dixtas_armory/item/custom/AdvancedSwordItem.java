@@ -13,6 +13,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.CombatRules;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffects;
@@ -25,7 +26,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -65,6 +65,9 @@ public class AdvancedSwordItem extends SwordItem {
     float pUnarmoredDamage;
     int pInvincibilityTime;
     float pShieldCooldown;
+
+    public Item pSwitchItem;
+
     Random random = new Random();
 
     public AdvancedSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, double pAttackRangeModifier, AttackAttribute pAttackAttribute, TwoHandedAttribute pTwoHandedValues, SweepAttribute pSweep) {
@@ -97,11 +100,44 @@ public class AdvancedSwordItem extends SwordItem {
         pInvincibilityTime = pAttackAttribute.invincibilityTime;
         pShieldCooldown = pAttackAttribute.breachTime;
 
+    }
+
+    public AdvancedSwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties, double pAttackRangeModifier, AttackAttribute pAttackAttribute, TwoHandedAttribute pTwoHandedValues, SweepAttribute pSweep, Item switchItem) {
+        super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);
+
+        //Default Attributes
+        pAttackRange = pAttackRangeModifier - 3;
+        pAttackSpeed = pAttackSpeedModifier - 4;
+
+        //Two-Handed
+        pIsTwoHanded = pTwoHandedValues.level > 0;
+        pLevelTwoHanded = pTwoHandedValues.level;
+        pTwoHandedISpeed = (float)pAttackSpeed - pTwoHandedValues.minSpeed;
+        pTwoHandedIISpeed = (float)pAttackSpeed -  pTwoHandedValues.majSpeed;
+        pTwoHandedIDamage = getDamage() - pTwoHandedValues.minDamage;
+        pTwoHandedIIDamage = getDamage() - pTwoHandedValues.majDamage;
+
+        //Sweep
+        pSweepBoxX = pSweep.sweepRadiusX;
+        pSweepBoxY = pSweep.sweepRadiusX;
+        pSweepBoxZ = pSweep.sweepRadiusX;
+        pCanSweep = pSweep.canSweep;
+        pDamageSweep = pSweep.sweepDamage;
+
+        //Attack
+        pAttackKnockback = pAttackAttribute.knockback;
+        pArmorPierceChance =pAttackAttribute.armorPiercingChance;
+        pArmorPiercing = pAttackAttribute.armorPiercingAmount;
+        pUnarmoredDamage = pAttackAttribute.unarmoredBonusDamage;
+        pInvincibilityTime = pAttackAttribute.invincibilityTime;
+        pShieldCooldown = pAttackAttribute.breachTime;
 
 
-
+        pSwitchItem = switchItem;
 
     }
+
+
 
 
     @Override
@@ -174,7 +210,14 @@ public class AdvancedSwordItem extends SwordItem {
 
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
-
+        if(ModList.get().isLoaded("bettercombat") && pLevelTwoHanded == 1 && pEntity instanceof Player && !pLevel.isClientSide && !(this instanceof TwoHandedIWeapon)) {
+            Player p = (Player) pEntity;
+            if(p.getMainHandItem() == pStack && (p.getOffhandItem().getItem() == Items.AIR || checkHeavy(p.getOffhandItem()))) {
+                ItemStack pNew = new ItemStack(pSwitchItem);
+                pNew.setTag(pStack.getTag());
+                p.setItemInHand(InteractionHand.MAIN_HAND, pNew);
+            }
+        }
 
 
 
@@ -186,11 +229,6 @@ public class AdvancedSwordItem extends SwordItem {
     }
 
     private void twoHanded(LivingEntity pPlayer, ItemStack pStack) {
-        if(pPlayer instanceof Player){
-            boolean b = ((Player) pPlayer).getInventory().getItem(40).getItem() == Items.AIR;
-        }
-
-
         if(pIsTwoHanded)
         {
             pStack.getOrCreateTag().putInt("dixtas_armory.two_handed", -1);

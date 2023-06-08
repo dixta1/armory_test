@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 
 import net.dixta.dixtas_armory.item.ModItems;
 import net.dixta.dixtas_armory.item.OreganizedItems;
+import net.dixta.dixtas_armory.item.custom.AdvancedSwordItem;
 import net.dixta.dixtas_armory.util.ModItemProperties;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -36,18 +37,32 @@ public class DixtasArmory
         if(ModList.get().isLoaded("oreganized"))
             OreganizedItems.register(eventBus);
 
+
         eventBus.addListener(this::setup);
         eventBus.addListener(this::clientSetup);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         //MinecraftForge.EVENT_BUS.register(new RangedWeaponEffect());
+
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
     }
     private void setup(final FMLCommonSetupEvent event)
     {
+        ((AdvancedSwordItem) ModItems.NETHERITE_KATANA.get()).pSwitchItem = ModItems.NETHERITE_KATANA_TWO_HANDED.get();
+        ((AdvancedSwordItem) ModItems.DIAMOND_KATANA.get()).pSwitchItem = ModItems.DIAMOND_KATANA_TWO_HANDED.get();
+        ((AdvancedSwordItem) ModItems.IRON_KATANA.get()).pSwitchItem = ModItems.IRON_KATANA_TWO_HANDED.get();
+        ((AdvancedSwordItem) ModItems.STONE_KATANA.get()).pSwitchItem = ModItems.STONE_KATANA_TWO_HANDED.get();
+        ((AdvancedSwordItem) ModItems.WOODEN_KATANA.get()).pSwitchItem = ModItems.WOODEN_KATANA_TWO_HANDED.get();
+        ((AdvancedSwordItem) ModItems.GOLDEN_KATANA.get()).pSwitchItem = ModItems.GOLDEN_KATANA_TWO_HANDED.get();
 
+        ((AdvancedSwordItem) ModItems.NETHERITE_SPEAR.get()).pSwitchItem = ModItems.NETHERITE_SPEAR_TWO_HANDED.get();
+        ((AdvancedSwordItem) ModItems.DIAMOND_SPEAR.get()).pSwitchItem = ModItems.DIAMOND_SPEAR_TWO_HANDED.get();
+        ((AdvancedSwordItem) ModItems.IRON_SPEAR.get()).pSwitchItem = ModItems.IRON_SPEAR_TWO_HANDED.get();
+        ((AdvancedSwordItem) ModItems.STONE_SPEAR.get()).pSwitchItem = ModItems.STONE_SPEAR_TWO_HANDED.get();
+        ((AdvancedSwordItem) ModItems.WOODEN_SPEAR.get()).pSwitchItem = ModItems.WOODEN_SPEAR_TWO_HANDED.get();
+        ((AdvancedSwordItem) ModItems.GOLDEN_SPEAR.get()).pSwitchItem = ModItems.GOLDEN_SPEAR_TWO_HANDED.get();
     }
 }

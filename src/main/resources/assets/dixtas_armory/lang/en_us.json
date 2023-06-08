@@ -25,6 +25,15 @@
   "item.dixtas_armory.golden_spear": "Golden Spear",
   "item.dixtas_armory.electrum_spear": "Electrum Spear",
 
+  "item.dixtas_armory.netherite_spear_two_handed": "Netherite Spear",
+  "item.dixtas_armory.diamond_spear_two_handed": "Diamond Spear",
+  "item.dixtas_armory.iron_spear_two_handed": "Iron Spear",
+  "item.dixtas_armory.stone_spear_two_handed": "Stone Spear",
+  "item.dixtas_armory.wooden_spear_two_handed": "Wooden Spear",
+  "item.dixtas_armory.golden_spear_two_handed": "Golden Spear",
+  "item.dixtas_armory.electrum_spear_two_handed": "Electrum Spear",
+
+
   "item.dixtas_armory.netherite_stiletto": "Netherite Stiletto",
   "item.dixtas_armory.diamond_stiletto": "Diamond Stiletto",
   "item.dixtas_armory.iron_stiletto": "Iron Stiletto",
@@ -48,6 +57,14 @@
   "item.dixtas_armory.wooden_katana": "Wooden Katana",
   "item.dixtas_armory.golden_katana": "Golden Katana",
   "item.dixtas_armory.electrum_katana": "Electrum Katana",
+
+  "item.dixtas_armory.netherite_katana_two_handed": "Netherite Katana",
+  "item.dixtas_armory.diamond_katana_two_handed": "Diamond Katana",
+  "item.dixtas_armory.iron_katana_two_handed": "Iron Katana",
+  "item.dixtas_armory.stone_katana_two_handed": "Stone Katana",
+  "item.dixtas_armory.wooden_katana_two_handed": "Wooden Katana",
+  "item.dixtas_armory.golden_katana_two_handed": "Golden Katana",
+  "item.dixtas_armory.electrum_katana_two_handed": "Electrum Katana",
 
   "item.dixtas_armory.netherite_greatsword": "Netherite Greatsword",
   "item.dixtas_armory.diamond_greatsword": "Diamond Greatsword",

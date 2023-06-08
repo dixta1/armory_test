@@ -1,0 +1,6 @@
+{
+  "parent": "dixtas_armory:presets/spear_two_handed",
+  "attributes": {
+    "attack_range": 4.5
+  }
+}

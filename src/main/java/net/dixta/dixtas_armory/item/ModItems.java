@@ -3,6 +3,7 @@ package net.dixta.dixtas_armory.item;
 import net.dixta.dixtas_armory.DixtasArmory;
 import net.dixta.dixtas_armory.item.custom.AdvancedAxeItem;
 import net.dixta.dixtas_armory.item.custom.AdvancedSwordItem;
+import net.dixta.dixtas_armory.item.custom.TwoHandedIWeapon;
 import net.dixta.dixtas_armory.item.custom.attributes.AttackAttribute;
 import net.dixta.dixtas_armory.item.custom.attributes.SweepAttribute;
 import net.dixta.dixtas_armory.item.custom.attributes.TwoHandedAttribute;
@@ -38,7 +39,10 @@ public class ModItems {
             () -> new AdvancedSwordItem(Tiers.WOOD, 2, 2f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3, new AttackAttribute(0,0,0,1,20,0,0), TwoHandedAttribute.none,SweepAttribute.normal));
 
     public static final RegistryObject<Item> WOODEN_KATANA = ITEMS.register("wooden_katana",
-            () -> new AdvancedSwordItem(Tiers.WOOD, 3, 1.8f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,AttackAttribute.none,new TwoHandedAttribute(1,1,3,0.05f,1),new SweepAttribute(true,2,1.25f)));
+            () -> new AdvancedSwordItem(Tiers.WOOD, 3, 1.8f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,AttackAttribute.none,new TwoHandedAttribute(1,1,3,0.05f,1),new SweepAttribute(true,2,1.25f), Items.AIR));
+
+    public static final RegistryObject<Item> WOODEN_KATANA_TWO_HANDED = ITEMS.register("wooden_katana_two_handed",
+            () -> new TwoHandedIWeapon(Tiers.WOOD, 3, 1.8f, new Item.Properties(),3.25,AttackAttribute.none,new TwoHandedAttribute(1,1,3,0.05f,1),new SweepAttribute(true,2,1.25f), WOODEN_KATANA.get()));
 
     public static final RegistryObject<Item> WOODEN_GREATSWORD = ITEMS.register("wooden_greatsword",
             () -> new AdvancedSwordItem(Tiers.WOOD, 4, 1.2f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.5,AttackAttribute.none,new TwoHandedIIAttribute(4,0.4f),new SweepAttribute(true, 3,1.5f)));
@@ -62,7 +66,10 @@ public class ModItems {
             () -> new AdvancedSwordItem(Tiers.WOOD, 6, 1f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),  4, AttackAttribute.none, new TwoHandedIIAttribute(4,0.5f), SweepAttribute.normal));
 
     public static final RegistryObject<Item> WOODEN_SPEAR = ITEMS.register("wooden_spear",
-            () -> new AdvancedSwordItem(Tiers.WOOD, 2, 1.3f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.2, new AttackAttribute(0,1,1,0,20,0,0), new TwoHandedAttribute(1,0,1,0.1f,0.55f), SweepAttribute.none));
+            () -> new AdvancedSwordItem(Tiers.WOOD, 2, 1.3f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.2, new AttackAttribute(0,1,1,0,20,0,0), new TwoHandedAttribute(1,0,1,0.1f,0.55f), SweepAttribute.none, Items.AIR));
+
+    public static final RegistryObject<Item> WOODEN_SPEAR_TWO_HANDED = ITEMS.register("wooden_spear_two_handed",
+            () -> new TwoHandedIWeapon(Tiers.WOOD, 2, 1.3f, new Item.Properties(), 4.2, new AttackAttribute(0,1,1,0,20,0,0), new TwoHandedAttribute(1,0,1,0.1f,0.55f), SweepAttribute.none, WOODEN_SPEAR.get()));
 
     public static final RegistryObject<Item> WOODEN_HALBERD = ITEMS.register("wooden_halberd",
             () -> new AdvancedSwordItem(Tiers.WOOD, 7, 0.6f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.5, new AttackAttribute(0,0.5f,4,0,20,1.5f,1), new TwoHandedIIAttribute(3,0.2f), SweepAttribute.none));
@@ -89,7 +96,10 @@ public class ModItems {
             () -> new AdvancedSwordItem(Tiers.STONE, 1, 2f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3, new AttackAttribute(0,0,0,2,20,0,0), TwoHandedAttribute.none,SweepAttribute.normal));
 
     public static final RegistryObject<Item> STONE_KATANA = ITEMS.register("stone_katana",
-            () -> new AdvancedSwordItem(Tiers.STONE, 3, 1.8f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,AttackAttribute.none,new TwoHandedAttribute(1,1,4,0.05f,1),new SweepAttribute(true,2,1.25f)));
+            () -> new AdvancedSwordItem(Tiers.STONE, 3, 1.8f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,AttackAttribute.none,new TwoHandedAttribute(1,1,4,0.05f,1),new SweepAttribute(true,2,1.25f), Items.AIR));
+
+    public static final RegistryObject<Item> STONE_KATANA_TWO_HANDED = ITEMS.register("stone_katana_two_handed",
+            () -> new TwoHandedIWeapon(Tiers.STONE, 3, 1.8f, new Item.Properties(),3.25,AttackAttribute.none,new TwoHandedAttribute(1,1,4,0.05f,1),new SweepAttribute(true,2,1.25f), STONE_KATANA.get()));
 
     public static final RegistryObject<Item> STONE_GREATSWORD = ITEMS.register("stone_greatsword",
             () -> new AdvancedSwordItem(Tiers.STONE, 4, 1.2f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.5,AttackAttribute.none,new TwoHandedIIAttribute(5,0.4f),new SweepAttribute(true, 3,1.5f)));
@@ -113,7 +123,10 @@ public class ModItems {
             () -> new AdvancedSwordItem(Tiers.STONE, 6, 1f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),  4, AttackAttribute.none, new TwoHandedIIAttribute(4,0.5f), SweepAttribute.normal));
 
     public static final RegistryObject<Item> STONE_SPEAR = ITEMS.register("stone_spear",
-            () -> new AdvancedSwordItem(Tiers.STONE, 2, 1.3f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.2, new AttackAttribute(0,1,1,0,20,0,0), new TwoHandedAttribute(1,0,2,0.1f,0.55f), SweepAttribute.none));
+            () -> new AdvancedSwordItem(Tiers.STONE, 2, 1.3f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.2, new AttackAttribute(0,1,1,0,20,0,0), new TwoHandedAttribute(1,0,2,0.1f,0.55f), SweepAttribute.none,Items.AIR));
+
+    public static final RegistryObject<Item> STONE_SPEAR_TWO_HANDED = ITEMS.register("stone_spear_two_handed",
+            () -> new TwoHandedIWeapon(Tiers.STONE, 2, 1.3f, new Item.Properties(), 4.2, new AttackAttribute(0,1,1,0,20,0,0), new TwoHandedAttribute(1,0,2,0.1f,0.55f), SweepAttribute.none, STONE_SPEAR.get()));
 
     public static final RegistryObject<Item> STONE_HALBERD = ITEMS.register("stone_halberd",
             () -> new AdvancedSwordItem(Tiers.STONE, 8, 0.6f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.5, new AttackAttribute(0,0.5f,4,0,20,1.5f,1), new TwoHandedIIAttribute(4,0.2f), SweepAttribute.none));
@@ -140,7 +153,10 @@ public class ModItems {
             () -> new AdvancedSwordItem(Tiers.GOLD, 2, 2f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3, new AttackAttribute(0,0,0,1,20,0,0), TwoHandedAttribute.none,SweepAttribute.normal));
 
     public static final RegistryObject<Item> GOLDEN_KATANA = ITEMS.register("golden_katana",
-            () -> new AdvancedSwordItem(Tiers.GOLD, 3, 1.8f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,AttackAttribute.none,new TwoHandedAttribute(1,1,3,0.05f,1),new SweepAttribute(true,2,1.25f)));
+            () -> new AdvancedSwordItem(Tiers.GOLD, 3, 1.8f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,AttackAttribute.none,new TwoHandedAttribute(1,1,3,0.05f,1),new SweepAttribute(true,2,1.25f), Items.AIR));
+
+    public static final RegistryObject<Item> GOLDEN_KATANA_TWO_HANDED = ITEMS.register("golden_katana_two_handed",
+            () -> new TwoHandedIWeapon(Tiers.GOLD, 3, 1.8f, new Item.Properties(),3.25,AttackAttribute.none,new TwoHandedAttribute(1,1,3,0.05f,1),new SweepAttribute(true,2,1.25f), GOLDEN_KATANA.get()));
 
     public static final RegistryObject<Item> GOLDEN_GREATSWORD = ITEMS.register("golden_greatsword",
             () -> new AdvancedSwordItem(Tiers.GOLD, 4, 1.2f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.5,AttackAttribute.none,new TwoHandedIIAttribute(4,0.4f),new SweepAttribute(true, 3,1.5f)));
@@ -164,7 +180,10 @@ public class ModItems {
             () -> new AdvancedSwordItem(Tiers.GOLD, 6, 1f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),  4, AttackAttribute.none, new TwoHandedIIAttribute(4,0.5f), SweepAttribute.normal));
 
     public static final RegistryObject<Item> GOLDEN_SPEAR = ITEMS.register("golden_spear",
-            () -> new AdvancedSwordItem(Tiers.GOLD, 2, 1.3f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.2, new AttackAttribute(0,1,1,0,20,0,0), new TwoHandedAttribute(1,0,1,0.1f,0.55f), SweepAttribute.none));
+            () -> new AdvancedSwordItem(Tiers.GOLD, 2, 1.3f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.2, new AttackAttribute(0,1,1,0,20,0,0), new TwoHandedAttribute(1,0,1,0.1f,0.55f), SweepAttribute.none, Items.AIR));
+
+    public static final RegistryObject<Item> GOLDEN_SPEAR_TWO_HANDED = ITEMS.register("golden_spear_two_handed",
+            () -> new TwoHandedIWeapon(Tiers.GOLD, 2, 1.3f, new Item.Properties(), 4.2, new AttackAttribute(0,1,1,0,20,0,0), new TwoHandedAttribute(1,0,1,0.1f,0.55f), SweepAttribute.none, GOLDEN_SPEAR.get()));
 
     public static final RegistryObject<Item> GOLDEN_HALBERD = ITEMS.register("golden_halberd",
             () -> new AdvancedSwordItem(Tiers.GOLD, 7, 0.7f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.5, new AttackAttribute(0,0.5f,4,0,20,1.5f,1), new TwoHandedIIAttribute(3,0.2f), SweepAttribute.none));
@@ -191,7 +210,10 @@ public class ModItems {
             () -> new AdvancedSwordItem(Tiers.IRON, 1, 2f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3, new AttackAttribute(0,0,0,2,20,0,0), TwoHandedAttribute.none,SweepAttribute.normal));
 
     public static final RegistryObject<Item> IRON_KATANA = ITEMS.register("iron_katana",
-            () -> new AdvancedSwordItem(Tiers.IRON, 3, 1.8f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,AttackAttribute.none,new TwoHandedAttribute(1,1,4,0.1f,1),new SweepAttribute(true,2,1.25f)));
+            () -> new AdvancedSwordItem(Tiers.IRON, 3, 1.8f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,AttackAttribute.none,new TwoHandedAttribute(1,1,4,0.1f,1),new SweepAttribute(true,2,1.25f), Items.AIR));
+
+    public static final RegistryObject<Item> IRON_KATANA_TWO_HANDED = ITEMS.register("iron_katana_two_handed",
+            () -> new TwoHandedIWeapon(Tiers.IRON, 3, 1.8f, new Item.Properties(),3.25,AttackAttribute.none,new TwoHandedAttribute(1,1,4,0.1f,1),new SweepAttribute(true,2,1.25f), IRON_KATANA.get()));
 
     public static final RegistryObject<Item> IRON_GREATSWORD = ITEMS.register("iron_greatsword",
             () -> new AdvancedSwordItem(Tiers.IRON, 4, 1.2f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.5,AttackAttribute.none,new TwoHandedIIAttribute(5,0.4f),new SweepAttribute(true, 4,1.5f)));
@@ -215,7 +237,10 @@ public class ModItems {
             () -> new AdvancedSwordItem(Tiers.IRON, 6, 1f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),  4, AttackAttribute.none, new TwoHandedIIAttribute(4,0.5f), SweepAttribute.normal));
 
     public static final RegistryObject<Item> IRON_SPEAR = ITEMS.register("iron_spear",
-            () -> new AdvancedSwordItem(Tiers.IRON, 2, 1.3f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.2, new AttackAttribute(0,1,1,0,20,0,0), new TwoHandedAttribute(1,0,2,0.1f,0.55f), SweepAttribute.none));
+            () -> new AdvancedSwordItem(Tiers.IRON, 2, 1.3f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.2, new AttackAttribute(0,1,1,0,20,0,0), new TwoHandedAttribute(1,0,2,0.1f,0.55f), SweepAttribute.none, Items.AIR));
+
+    public static final RegistryObject<Item> IRON_SPEAR_TWO_HANDED = ITEMS.register("iron_spear_two_handed",
+            () -> new TwoHandedIWeapon(Tiers.IRON, 2, 1.3f, new Item.Properties(), 4.2, new AttackAttribute(0,1,1,0,20,0,0), new TwoHandedAttribute(1,0,2,0.1f,0.55f), SweepAttribute.none, IRON_SPEAR.get()));
 
     public static final RegistryObject<Item> IRON_HALBERD = ITEMS.register("iron_halberd",
             () -> new AdvancedSwordItem(Tiers.IRON, 7, 0.65f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.5, new AttackAttribute(0,0.5f,4,0,20,1.5f,1), new TwoHandedIIAttribute(3,0.2f), SweepAttribute.none));
@@ -242,7 +267,10 @@ public class ModItems {
             () -> new AdvancedSwordItem(Tiers.DIAMOND, 0, 2f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3, new AttackAttribute(0,0,0,3,20,0,0), TwoHandedAttribute.none,SweepAttribute.normal));
 
     public static final RegistryObject<Item> DIAMOND_KATANA = ITEMS.register("diamond_katana",
-            () -> new AdvancedSwordItem(Tiers.DIAMOND, 3, 1.8f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,AttackAttribute.none,new TwoHandedAttribute(1,2,5,0.05f,1),new SweepAttribute(true,2,1.25f)));
+            () -> new AdvancedSwordItem(Tiers.DIAMOND, 3, 1.8f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,AttackAttribute.none,new TwoHandedAttribute(1,2,5,0.05f,1),new SweepAttribute(true,2,1.25f), Items.AIR));
+
+    public static final RegistryObject<Item> DIAMOND_KATANA_TWO_HANDED = ITEMS.register("diamond_katana_two_handed",
+            () -> new TwoHandedIWeapon(Tiers.DIAMOND, 3, 1.8f, new Item.Properties(),3.25,AttackAttribute.none,new TwoHandedAttribute(1,2,5,0.05f,1),new SweepAttribute(true,2,1.25f), DIAMOND_KATANA.get()));
 
     public static final RegistryObject<Item> DIAMOND_GREATSWORD = ITEMS.register("diamond_greatsword",
             () -> new AdvancedSwordItem(Tiers.DIAMOND, 4, 1.2f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.5,AttackAttribute.none,new TwoHandedIIAttribute(6,0.4f),new SweepAttribute(true, 5,1.5f)));
@@ -266,7 +294,10 @@ public class ModItems {
             () -> new AdvancedSwordItem(Tiers.DIAMOND, 6, 1f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),  4, AttackAttribute.none, new TwoHandedIIAttribute(4,0.5f), SweepAttribute.normal));
 
     public static final RegistryObject<Item> DIAMOND_SPEAR = ITEMS.register("diamond_spear",
-            () -> new AdvancedSwordItem(Tiers.DIAMOND, 1, 1.3f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.2, new AttackAttribute(0,1,2,0,20,0,0), new TwoHandedAttribute(1,0,3,0.1f,0.55f), SweepAttribute.none));
+            () -> new AdvancedSwordItem(Tiers.DIAMOND, 1, 1.3f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.2, new AttackAttribute(0,1,2,0,20,0,0), new TwoHandedAttribute(1,0,3,0.1f,0.55f), SweepAttribute.none, Items.AIR));
+
+    public static final RegistryObject<Item> DIAMOND_SPEAR_TWO_HANDED = ITEMS.register("diamond_spear_two_handed",
+            () -> new TwoHandedIWeapon(Tiers.DIAMOND, 1, 1.3f, new Item.Properties(), 4.2, new AttackAttribute(0,1,2,0,20,0,0), new TwoHandedAttribute(1,0,3,0.1f,0.55f), SweepAttribute.none, DIAMOND_SPEAR.get()));
 
     public static final RegistryObject<Item> DIAMOND_HALBERD = ITEMS.register("diamond_halberd",
             () -> new AdvancedSwordItem(Tiers.DIAMOND, 6, 0.7f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.5, new AttackAttribute(0,0.5f,4,0,20,1.5f,1), new TwoHandedIIAttribute(5,0.2f), SweepAttribute.none));
@@ -293,7 +324,10 @@ public class ModItems {
             () -> new AdvancedSwordItem(Tiers.NETHERITE, 0, 2f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3, new AttackAttribute(0,0,0,3,20,0,0), TwoHandedAttribute.none,SweepAttribute.normal));
 
     public static final RegistryObject<Item> NETHERITE_KATANA = ITEMS.register("netherite_katana",
-            () -> new AdvancedSwordItem(Tiers.NETHERITE, 3, 1.8f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,AttackAttribute.none,new TwoHandedAttribute(1,2,5,0.05f,1),new SweepAttribute(true,2,1.25f)));
+            () -> new AdvancedSwordItem(Tiers.NETHERITE, 3, 1.8f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.25,AttackAttribute.none,new TwoHandedAttribute(1,2,5,0.05f,1),new SweepAttribute(true,2,1.25f), Items.AIR));
+
+    public static final RegistryObject<Item> NETHERITE_KATANA_TWO_HANDED = ITEMS.register("netherite_katana_two_handed",
+            () -> new TwoHandedIWeapon(Tiers.NETHERITE, 3, 1.8f, new Item.Properties(),3.25,AttackAttribute.none,new TwoHandedAttribute(1,2,5,0.05f,1),new SweepAttribute(true,2,1.25f), NETHERITE_KATANA.get()));
 
     public static final RegistryObject<Item> NETHERITE_GREATSWORD = ITEMS.register("netherite_greatsword",
             () -> new AdvancedSwordItem(Tiers.NETHERITE, 4, 1.2f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),3.5,AttackAttribute.none,new TwoHandedIIAttribute(6,0.4f),new SweepAttribute(true, 5,1.5f)));
@@ -317,7 +351,10 @@ public class ModItems {
             () -> new AdvancedSwordItem(Tiers.NETHERITE, 6, 1f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB),  4, AttackAttribute.none, new TwoHandedIIAttribute(4,0.5f), SweepAttribute.normal));
 
     public static final RegistryObject<Item> NETHERITE_SPEAR = ITEMS.register("netherite_spear",
-            () -> new AdvancedSwordItem(Tiers.NETHERITE, 1, 1.3f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.2, new AttackAttribute(0,1,2,0,20,0,0), new TwoHandedAttribute(1,0,3,0.1f,0.55f), SweepAttribute.none));
+            () -> new AdvancedSwordItem(Tiers.NETHERITE, 1, 1.3f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.2, new AttackAttribute(0,1,2,0,20,0,0), new TwoHandedAttribute(1,0,3,0.1f,0.55f), SweepAttribute.none, Items.AIR));
+
+    public static final RegistryObject<Item> NETHERITE_SPEAR_TWO_HANDED = ITEMS.register("netherite_spear_two_handed",
+            () -> new TwoHandedIWeapon(Tiers.NETHERITE, 1, 1.3f, new Item.Properties(), 4.2, new AttackAttribute(0,1,2,0,20,0,0), new TwoHandedAttribute(1,0,3,0.1f,0.55f), SweepAttribute.none, NETHERITE_SPEAR.get()));
 
     public static final RegistryObject<Item> NETHERITE_HALBERD = ITEMS.register("netherite_halberd",
             () -> new AdvancedSwordItem(Tiers.NETHERITE, 6, 0.7f, new Item.Properties().tab(ModCreativeModeTab.WEAPONS_TAB), 4.5, new AttackAttribute(0,0.5f,4,0,20,1.5f,1), new TwoHandedIIAttribute(5,0.2f), SweepAttribute.none));
